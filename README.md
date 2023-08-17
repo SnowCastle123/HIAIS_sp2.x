@@ -14,8 +14,13 @@ pip install spconv-cu102
 
 # Compile ops
 ##### make sure cuda10.2 #####
+
 cd HAIS/lib/hais_ops
+
 python setup.py build_ext develop
+
 # others
+
 pip install scipy
+
 pip install pyyaml
