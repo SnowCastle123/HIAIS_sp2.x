@@ -1,4 +1,4 @@
-# HIAIS_sp2.x
+# HIAIS_sp2.x for stpls3d
 
 conda create -n hais_sp2 python=3.7
 
