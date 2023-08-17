@@ -1,8 +1,11 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+
+# Modify the import statement
 import spconv.pytorch as spconv
 from spconv.pytorch.modules import SparseModule
+
 import functools
 from collections import OrderedDict
 import sys
@@ -40,6 +43,7 @@ class ResidualBlock(SparseModule):
         out_feats = output.features
         i_feat = identity.features
         output_feats = out_feats + i_feat
+        # In 2.x, you need to use replace to update features
         output = output.replace_feature(output_feats)
 
         return output
@@ -100,6 +104,7 @@ class UBlock(nn.Module):
             output_decoder = self.u(output_decoder)
             output_decoder = self.deconv(output_decoder)
             output_features = torch.cat((identity.features, output_decoder.features), dim=1)
+             # In 2.x, you need to use replace to update features
             output = output.replace_feature(output_features)
             output = self.blocks_tail(output)
         return output
